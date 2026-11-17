@@ -30,7 +30,7 @@ def head(lg, i=None, tag=None, h=110, ml=-12, col=""):
 
 LY = f"{ab(AY)} {str(YIL-1)[2:]}"
 G3 = [("Toplam", [(LY, TR["gecen_yil"]), (ab(PREVM), TR["onceki_ay"]), (ab(AY), TR["satis"])]),
-      ("İlk el", [(LY, TR["ilk_el_gecen_yil"]), (ab(PREVM), TR["ilk_el_onceki_ay"]), (ab(AY), TR["ilk_el"])]),
+      ("Sıfır", [(LY, TR["ilk_el_gecen_yil"]), (ab(PREVM), TR["ilk_el_onceki_ay"]), (ab(AY), TR["ilk_el"])]),
       ("İkinci el", [(LY, TR["ikinci_el_gecen_yil"]), (ab(PREVM), TR["ikinci_el_onceki_ay"]), (ab(AY), TR["ikinci_el"])])]
 mchg = (TR["satis"] / TR["onceki_ay"] - 1) * 100
 kred = TR["ipotekli"] / TR["satis"] * 100
@@ -46,13 +46,13 @@ T[f"{SLUG}_01_dikey-4x5"] = P(1080, 1350, "y", f"""
   <div style="margin-top:22px">{badge(TR['yillik_degisim'], 'geçen yılın aynı ayına göre', '#000', Y, 28)}</div>
 </div>
 <div style="padding:0 64px;margin-top:60px;display:grid;grid-template-columns:1fr 1fr;gap:22px">
-  {card('İLK EL', thou(TR['ilk_el']), chg(TR['ilk_el_yillik']) + ' yıllık', dark=True)}
-  {card('İKİNCİ EL', thou(TR['ikinci_el']), chg(TR['ikinci_el_yillik']) + ' yıllık', dark=True, accent=True)}
+  {card('SIFIR KONUT', thou(TR['ilk_el']), chg(TR['ilk_el_yillik']) + ' geçen yıla göre', dark=True)}
+  {card('İKİNCİ EL', thou(TR['ikinci_el']), chg(TR['ikinci_el_yillik']) + ' geçen yıla göre', dark=True, accent=True)}
 </div>
-<div style="padding:0 64px;margin-top:30px;display:flex;gap:16px;font-size:24px;font-weight:700">
-  <span style="{pill}">Aylık {pct(mchg,1,True)}</span>
-  <span style="{pill}">Kredili %{num(kred)}</span>
-  <span style="{pill}">Ocak–{AY} {pct(YB['toplam_degisim'],1,True)}</span>
+<div style="padding:0 64px;margin-top:30px;display:flex;flex-wrap:wrap;gap:16px;font-size:24px;font-weight:700">
+  <span style="{pill}">Geçen aya göre {pct(mchg,1,True)}</span>
+  <span style="{pill}">Krediyle %{num(kred)}</span>
+  <span style="{pill}">Yılbaşından beri {pct(YB['toplam_degisim'],1,True)}</span>
 </div>
 {footer('fk', 150)}""")
 
@@ -60,8 +60,8 @@ pages = {}
 pages["01-kapak"] = page(1080, 1350, "k", hero_cover(1080, 1350, logo('yatay_siyah-zemin'),
     f'<span style="color:var(--y)">{dots(NN, 0)}</span>',
     f'{AY} ayında<br><span>kaç konut</span><br>satıldı?',
-    thou(TR['satis']), f"İlk el {thou(TR['ilk_el'])} · İkinci el {thou(TR['ikinci_el'])}",
-    ["KONUT", "SATIŞI"], f"TÜİK · {up(AY)}", badge(TR['yillik_degisim'], 'yıllık', Y, '#000', 28),
+    thou(TR['satis']), f"Sıfır {thou(TR['ilk_el'])} · İkinci el {thou(TR['ikinci_el'])}",
+    ["KONUT", "SATIŞI"], f"TÜİK · {up(AY)}", badge(TR['yillik_degisim'], 'geçen yıla göre', Y, '#000', 28),
     down=TR['yillik_degisim'] < 0), CSSX)
 for i, y in enumerate(YR):
     pages[f"{i+2:02d}-tespit-{i+1}"] = insight_slide(page, CSSX, logo, dots, footer, i + 1, NN, y, GRUP, i + 1, len(YR), dark=(i % 2 == 0))
@@ -76,7 +76,7 @@ pages[f"{b:02d}-karsilastirma"] = P(1080, 1350, "k", f"""
 <div style="padding:0 34px;margin-top:50px">{bars3(G3, 1012, 600, fs=26)}</div>
 <div style="padding:0 64px;margin-top:10px;display:flex;justify-content:space-around;font-size:28px">
   <span>{chg(TR['yillik_degisim'])}</span><span>{chg(TR['ilk_el_yillik'])}</span><span>{chg(TR['ikinci_el_yillik'])}</span></div>
-<div style="padding:0 64px;text-align:center;font-size:22px;opacity:.6;margin-top:8px">yıllık değişim</div>
+<div style="padding:0 64px;text-align:center;font-size:22px;opacity:.6;margin-top:8px">geçen yılın aynı ayına göre değişim</div>
 {footer('fy', 110, addr=False)}""")
 
 pages[f"{b+1:02d}-dagilim"] = P(1080, 1350, "w", f"""
@@ -86,23 +86,23 @@ pages[f"{b+1:02d}-dagilim"] = P(1080, 1350, "w", f"""
   <h1 style="font-weight:900;font-size:76px;line-height:1.02;margin-top:30px">{thou(TR['satis'])} konutun<br>dağılımı</h1>
 </div>
 <div style="display:flex;align-items:center;gap:50px;padding:0 64px;margin-top:50px">
-  {donut([('İkinci el', TR['ikinci_el'], '#000'), ('İlk el', TR['ilk_el'], Y)], 430, txt='#000', center='%' + num(100-ilk_pay,0), sub='ikinci el')}
+  {donut([('İkinci el', TR['ikinci_el'], '#000'), ('Sıfır', TR['ilk_el'], Y)], 430, txt='#000', center='%' + num(100-ilk_pay,0), sub='ikinci el')}
   <div style="display:flex;flex-direction:column;gap:26px;font-size:30px">
     <div><div style="display:flex;align-items:center;gap:12px;font-weight:800"><i style="width:26px;height:26px;background:#000;border-radius:6px;display:inline-block"></i>İkinci el</div><div style="font-size:52px;font-weight:900">{thou(TR['ikinci_el'])}</div></div>
-    <div><div style="display:flex;align-items:center;gap:12px;font-weight:800"><i style="width:26px;height:26px;background:var(--y);border-radius:6px;display:inline-block"></i>İlk el</div><div style="font-size:52px;font-weight:900">{thou(TR['ilk_el'])}</div></div>
+    <div><div style="display:flex;align-items:center;gap:12px;font-weight:800"><i style="width:26px;height:26px;background:var(--y);border-radius:6px;display:inline-block"></i>Sıfır konut</div><div style="font-size:52px;font-weight:900">{thou(TR['ilk_el'])}</div></div>
   </div>
 </div>
 <div style="margin:56px 64px 0;background:var(--y);border-radius:20px;padding:30px 34px;display:flex;align-items:center;gap:28px">
   <div style="flex:none;width:96px;height:96px;background:#000;border-radius:20px;display:flex;align-items:center;justify-content:center">{icon('bank', Y, 58)}</div>
-  <div><div style="font-size:24px;font-weight:800;letter-spacing:.08em">KREDİLİ (İPOTEKLİ) SATIŞ</div>
+  <div><div style="font-size:24px;font-weight:800;letter-spacing:.08em">KREDİYLE ALINAN KONUT</div>
   <div style="font-size:50px;font-weight:900">{thou(TR['ipotekli'])} <span style="font-size:30px;font-weight:600">· satışların %{num(kred)}'i</span></div></div>
 </div>
 {footer('fk', 110, addr=False)}""")
 
 ROWS = [("Toplam", YB["toplam"], YB["toplam_degisim"], True),
         ("İkinci el", YB["ikinci_el"], YB["ikinci_el_degisim"], False),
-        ("İlk el", YB["ilk_el"], YB["ilk_el_degisim"], False),
-        ("Kredili", YB["ipotekli"], YB["ipotekli_degisim"], False)]
+        ("Sıfır", YB["ilk_el"], YB["ilk_el_degisim"], False),
+        ("Krediyle", YB["ipotekli"], YB["ipotekli_degisim"], False)]
 pages[f"{b+2:02d}-yilbasindan"] = P(1080, 1350, "k", f"""
 {head('yatay_siyah-zemin', b + 1, col='color:var(--y)')}
 <div style="padding:0 64px;margin-top:70px">
@@ -130,15 +130,15 @@ T[f"{SLUG}_03_story-9x16_1-ozet"] = P(1080, 1920, "k", f"""
   <span class="tag" style="background:var(--y);color:#000">TÜİK · KONUT SATIŞLARI</span>
   <h1 style="font-weight:900;font-size:92px;line-height:1.0;margin-top:40px">{AY} {YIL}'de<br>satılan konut</h1>
   <div class="big" style="font-size:220px;color:var(--y);margin-top:30px">{thou(TR['satis'])}</div>
-  <div style="margin-top:26px">{badge(TR['yillik_degisim'], 'yıllık', Y, '#000', 32)}</div>
+  <div style="margin-top:26px">{badge(TR['yillik_degisim'], 'geçen yıla göre', Y, '#000', 32)}</div>
 </div>
 <div style="padding:0 34px;margin-top:70px">{bars3(G3, 1012, 560, fs=27)}</div>
 <div style="margin-top:auto;height:200px;background:var(--y);color:#000;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:40px">Detaylar yeni gönderimizde →</div>""")
 
 CAPTION = f"""{AY} {YIL} konut satış istatistikleri açıklandı 🏠
 Türkiye genelinde {thou(TR['satis'])} konut satıldı; geçen yılın aynı ayına göre {pct(TR['yillik_degisim'],1,True)}, bir önceki aya göre {pct(mchg,1,True)}.
-İlk el satışlar {pct(TR['ilk_el_yillik'],1,True)}, ikinci el satışlar {pct(TR['ikinci_el_yillik'],1,True)}. Kredili satışlar {AY} ayında {pct(TR['ipotekli_yillik'],1,True)} olsa da Ocak–{AY} döneminde {pct(YB['ipotekli_degisim'])} artıda.
-Yılbaşından bu yana {thou(YB['toplam'])} konut el değiştirdi ({pct(YB['toplam_degisim'],1,True)}).
+Sıfır (ilk el) konut satışları {pct(TR['ilk_el_yillik'],1,True)}, ikinci el satışlar {pct(TR['ikinci_el_yillik'],1,True)}. Krediyle yapılan satışlar {AY} ayında {pct(TR['ipotekli_yillik'],1,True)} olsa da Ocak–{AY} döneminde {pct(YB['ipotekli_degisim'])} artıda.
+Yılbaşından bu yana {thou(YB['toplam'])} konut satıldı ({pct(YB['toplam_degisim'],1,True)}).
 Evinizin bugünkü piyasa değerini öğrenmek için bizi arayın.
 ☎ {PHONE}
 Kaynak: TÜİK Konut ve İş Yeri Satış İstatistikleri, {AY} {YIL}

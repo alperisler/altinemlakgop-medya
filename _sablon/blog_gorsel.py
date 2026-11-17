@@ -90,9 +90,9 @@ T[f"{SLUG}_03_grafik-satis"] = chart_frame(
 H = K["gecmis"][-12:]
 T[f"{SLUG}_04_grafik-fiyat"] = chart_frame(
     "Konut fiyatlarında yıllık artış: İstanbul ve Türkiye",
-    "GRAFİK 2 · TCMB KONUT FİYAT ENDEKSİ",
+    "GRAFİK 2 · KONUT FİYATLARI (TCMB)",
     f'<div style="padding:40px 70px 0">{lines([ab(x["ay"]) for x in H], [("İstanbul", [x["ist"] for x in H], Y), ("Türkiye", [x["tr"] for x in H], "#fff")], 1460, 540, fs=28)}</div>',
-    f"Kaynak: TCMB Konut Fiyat Endeksi · yıllık % değişim · son dönem {K['donem']['ay']} {K['donem']['yil']}", dark=True)
+    f"Kaynak: TCMB Konut Fiyat Endeksi · geçen yılın aynı ayına göre % artış · son dönem {K['donem']['ay']} {K['donem']['yil']}", dark=True)
 
 def bigcard(icn, k, v, sub, dark=False):
     bg = "#000" if dark else "#fff"; fg = "#F3BD48" if dark else "#000"
@@ -107,13 +107,13 @@ T[f"{SLUG}_05_grafik-kira-getiri"] = P(1600, 900, "y", f"""
   <div style="font-size:56px;font-weight:900;line-height:1.05;margin-top:10px">Satılık ve kiralık ilanlar ne söylüyor?</div></div>
   <img src="{logo('yatay_sari-zemin')}" style="height:80px"></div>
 <div style="padding:0 70px;margin-top:44px;display:grid;grid-template-columns:repeat(4,1fr);gap:26px">
-  {bigcard('home', 'ORT. SATILIK İLAN', mtl(G['satilik_ort']), pct(G['satilik_degisim'],1,True) + ' aylık')}
-  {bigcard('key', 'ORT. KİRALIK İLAN', thou(G['kiralik_ort']) + ' TL', pct(G['kiralik_degisim'],1,True) + ' aylık')}
+  {bigcard('home', 'SATILIK İLAN ORTALAMASI', mtl(G['satilik_ort']), pct(G['satilik_degisim'],1,True) + ' geçen aya göre')}
+  {bigcard('key', 'KİRALIK İLAN ORTALAMASI', thou(G['kiralik_ort']) + ' TL', pct(G['kiralik_degisim'],1,True) + ' geçen aya göre')}
   {bigcard('pct', 'BRÜT KİRA GETİRİSİ', '≈ %' + num(GETIRI), 'yıllık kira ÷ satış fiyatı', dark=True)}
   {bigcard('cal', 'AMORTİSMAN', '≈ ' + num(AMORT) + ' yıl', 'kira ile geri dönüş', dark=True)}
 </div>
 <div style="margin:30px 70px 0;background:#000;color:#fff;border-radius:20px;padding:24px 32px;display:flex;align-items:center;gap:24px;font-size:28px;font-weight:700">
-  {icon('pin', Y, 50)}<span>Karşılaştırma: İstanbul ortalamasında brüt kira getirisi <b style="color:#F3BD48">≈ %{num(K['istanbul_birim']['kira_m2']*12/K['istanbul_birim']['fiyat_m2']*100)}</b>, amortisman <b style="color:#F3BD48">≈ {num(K['istanbul_birim']['fiyat_m2']/(K['istanbul_birim']['kira_m2']*12))} yıl</b> <span style="opacity:.6;font-weight:500">(TCMB, {K['istanbul_birim']['donem']})</span></span></div>
+  {icon('pin', Y, 50)}<span>Karşılaştırma: İstanbul ortalamasında kiradan yıllık kazanç <b style="color:#F3BD48">≈ %{num(K['istanbul_birim']['kira_m2']*12/K['istanbul_birim']['fiyat_m2']*100)}</b>, ev kendini kirayla <b style="color:#F3BD48">≈ {num(K['istanbul_birim']['fiyat_m2']/(K['istanbul_birim']['kira_m2']*12))} yılda</b> öder <span style="opacity:.6;font-weight:500">(TCMB, {K['istanbul_birim']['donem']})</span></span></div>
 <div class="src">Kaynak: İşlerOS ilan verileri (ilan fiyatlarıdır, gerçekleşen satış fiyatı değildir).</div>
 <div style="position:absolute;right:70px;bottom:30px;font-size:22px;font-weight:800">☎ {PHONE}</div>""")
 
@@ -144,7 +144,7 @@ T[f"{SLUG}_10_ig-carousel-4x5_2-satis"] = P(1080, 1350, "k", f"""
 <div style="padding:0 64px;margin-top:70px">
   <span class="tag" style="background:var(--y);color:#000">KONUT SATIŞLARI · {up(S['donem']['ay'])} {S['donem']['yil']}</span>
   <h1 style="font-weight:900;font-size:76px;line-height:1.02;margin-top:30px">Gaziosmanpaşa'da<br><span style="color:var(--y)">{thou(S['gop']['satis'])} konut</span> satıldı</h1>
-  <p style="font-size:26px;opacity:.7;margin-top:16px">Komşu ilçelerle karşılaştırma · yıllık değişim</p>
+  <p style="font-size:26px;opacity:.7;margin-top:16px">Komşu ilçelerle karşılaştırma · geçen yılın aynı ayına göre değişim</p>
 </div>
 <div style="padding:0 64px;margin-top:44px">{hbars(rows, 952, rh=86, fs=30, lw=270, vw=200)}</div>
 {footer('fy', 110, addr=False)}""")
@@ -154,7 +154,7 @@ T[f"{SLUG}_10_ig-carousel-4x5_3-fiyat"] = P(1080, 1350, "k", f"""
 <div style="padding:0 64px;margin-top:70px">
   <span class="tag" style="background:var(--y);color:#000">KONUT FİYATLARI · TCMB</span>
   <h1 style="font-weight:900;font-size:76px;line-height:1.02;margin-top:30px">İstanbul'da fiyatlar<br>yıllık <span style="color:var(--y)">{pct(K['istanbul']['yillik'])}</span> arttı</h1>
-  <p style="font-size:26px;opacity:.7;margin-top:16px">Konut fiyat endeksi · yıllık % değişim</p>
+  <p style="font-size:26px;opacity:.7;margin-top:16px">Konut fiyatları · geçen yılın aynı ayına göre % artış</p>
 </div>
 <div style="margin-top:auto;padding:0 34px 80px">{lines([ab(x["ay"]) for x in H], [("İstanbul", [x["ist"] for x in H], Y), ("Türkiye", [x["tr"] for x in H], "#fff")], 1012, 600, fs=26)}</div>""")
 
@@ -165,8 +165,8 @@ T[f"{SLUG}_10_ig-carousel-4x5_4-kira"] = P(1080, 1350, "y", f"""
   <h1 style="font-weight:900;font-size:76px;line-height:1.02;margin-top:30px">Gaziosmanpaşa'da<br>kira ve getiri</h1>
 </div>
 <div style="padding:0 64px;margin-top:44px;display:grid;grid-template-columns:1fr 1fr;gap:22px">
-  {bigcard('home', 'ORT. SATILIK İLAN', mtl(G['satilik_ort']), pct(G['satilik_degisim'],1,True) + ' aylık')}
-  {bigcard('key', 'ORT. KİRALIK İLAN', thou(G['kiralik_ort']) + ' TL', pct(G['kiralik_degisim'],1,True) + ' aylık')}
+  {bigcard('home', 'SATILIK İLAN ORTALAMASI', mtl(G['satilik_ort']), pct(G['satilik_degisim'],1,True) + ' geçen aya göre')}
+  {bigcard('key', 'KİRALIK İLAN ORTALAMASI', thou(G['kiralik_ort']) + ' TL', pct(G['kiralik_degisim'],1,True) + ' geçen aya göre')}
   {bigcard('pct', 'BRÜT GETİRİ', '≈ %' + num(GETIRI), 'yıllık', dark=True)}
   {bigcard('cal', 'AMORTİSMAN', '≈ ' + num(AMORT) + ' yıl', 'kira ile geri dönüş', dark=True)}
 </div>
@@ -203,7 +203,7 @@ T[f"{SLUG}_11_ig-story-9x16_2-ozet"] = P(1080, 1920, "y", f"""
   <h1 style="font-weight:900;font-size:96px;line-height:1.0;margin-top:36px">Gaziosmanpaşa'da<br>bu ay</h1>
   <div style="display:flex;flex-direction:column;gap:26px;margin-top:60px">
     {bigcard('home', 'KONUT SATIŞI · ' + up(S['donem']['ay']), thou(S['gop']['satis']) + ' adet', pct(S['gop']['yillik_degisim'],1,True) + ' yıllık', dark=True)}
-    {bigcard('key', 'ORT. KİRALIK İLAN', thou(G['kiralik_ort']) + ' TL', pct(G['kiralik_degisim'],1,True) + ' aylık')}
+    {bigcard('key', 'KİRALIK İLAN ORTALAMASI', thou(G['kiralik_ort']) + ' TL', pct(G['kiralik_degisim'],1,True) + ' geçen aya göre')}
     {bigcard('trendup', 'İSTANBUL KONUT FİYATI', pct(K['istanbul']['yillik'],1,True), 'yıllık · TCMB', dark=True)}
   </div>
 </div>
@@ -222,7 +222,7 @@ T[f"{SLUG}_10_ig-carousel-4x5_1b-yorumlar"] = P(1080, 1350, "y", f"""
 {ighead('yatay_sari-zemin', 1, dark=False)}
 <div style="padding:0 64px;margin-top:50px">
   <span class="tag" style="background:#000;color:var(--y)">BU AYIN YORUMLARI</span>
-  <h1 style="font-weight:900;font-size:68px;line-height:1.02;margin-top:24px">Sahadan 4 tespit</h1>
+  <h1 style="font-weight:900;font-size:68px;line-height:1.02;margin-top:24px">Bu ay öne çıkan 4 konu</h1>
 </div>
 <div style="padding:0 64px;margin-top:34px;display:grid;grid-template-columns:1fr 1fr;gap:20px">
   {''.join(yorum_card(y, i in (1, 2)) for i, y in enumerate(YR))}
@@ -231,7 +231,7 @@ T[f"{SLUG}_10_ig-carousel-4x5_1b-yorumlar"] = P(1080, 1350, "y", f"""
 T[f"{SLUG}_06_grafik-yorumlar"] = P(1600, 900, "y", f"""
 <div style="padding:56px 70px 0;display:flex;justify-content:space-between;align-items:flex-start">
   <div><div style="font-size:22px;font-weight:800;letter-spacing:.12em">GAZİOSMANPAŞA · {up(AY)} {YIL}</div>
-  <div style="font-size:56px;font-weight:900;line-height:1.05;margin-top:10px">Bu ayın 4 tespiti</div></div>
+  <div style="font-size:56px;font-weight:900;line-height:1.05;margin-top:10px">Bu ay öne çıkan 4 konu</div></div>
   <img src="{logo('yatay_sari-zemin')}" style="height:80px"></div>
 <div style="padding:0 70px;margin-top:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px">
   {''.join(yorum_card(y, i % 2 == 1, big=True) for i, y in enumerate(YR))}
@@ -263,7 +263,7 @@ if GY:
 {footer('fy', 110, addr=False)}""")
     T[f"{SLUG}_07_grafik-genel-piyasa"] = P(1600, 900, "k", f"""
 <div style="padding:56px 70px 0;display:flex;justify-content:space-between;align-items:flex-start">
-  <div><div style="font-size:22px;font-weight:800;letter-spacing:.12em;color:#F3BD48">GENEL PİYASA · KFE VE SATIŞ İSTATİSTİKLERİ</div>
+  <div><div style="font-size:22px;font-weight:800;letter-spacing:.12em;color:#F3BD48">GENEL PİYASA · FİYATLAR VE SATIŞLAR</div>
   <div style="font-size:56px;font-weight:900;line-height:1.05;margin-top:10px">Piyasada 4 büyük eğilim</div></div>
   <img src="{logo('yatay_siyah-zemin')}" style="height:80px"></div>
 <div style="padding:0 70px;margin-top:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px">

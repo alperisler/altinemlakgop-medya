@@ -118,7 +118,7 @@ def delta(bg, fg, fs=30):
     dv = R - PREV["oran"]
     return (f'<span style="display:inline-flex;align-items:center;gap:12px;background:{bg};color:{fg};font-weight:800;'
             f'font-size:{fs}px;padding:{fs*.4:.0f}px {fs*.8:.0f}px;border-radius:999px">{arrow_svg(fg, dv < 0)}'
-            f'{num(abs(dv))} puan <span style="font-weight:500;opacity:.8">{PREV["ay"]} ayına göre</span></span>')
+            f'{PREV["ay"]} ayında <span style="font-weight:900">{pct(PREV["oran"])}</span> idi</span>')
 
 ICONS = {
  "pct": '<path d="M19 5L5 19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/>',
@@ -177,7 +177,7 @@ def hist_rows(rh, bh, fs, mow, vw):
 
 H0 = OR[-13]["oran"] if len(OR) >= 13 else OR[0]["oran"]
 YDIFF = R - H0
-YTXT = f'1 yılda <b style="color:var(--y);font-weight:800">{num(abs(YDIFF))} puan</b> {"yükseldi" if YDIFF > 0 else "geriledi"}'
+YTXT = f'1 yıl önce <b style="color:var(--y);font-weight:800">{pct(H0)}</b> idi'
 
 T = {}
 T[f"{SLUG}_01_dikey-4x5"] = P(1080, 1350, "y", f"""
@@ -186,14 +186,14 @@ T[f"{SLUG}_01_dikey-4x5"] = P(1080, 1350, "y", f"""
   <div style="width:120px;height:14px;background:#000;margin-bottom:40px"></div>
   <h1 style="font-weight:900;font-size:92px;line-height:1.0">{AY} ayı kira artış oranı açıklandı</h1>
   <div class="rate" style="font-size:300px;margin-top:40px"><small>%</small>{RATE}</div>
-  <p style="font-weight:500;font-size:34px;line-height:1.35;margin-top:30px;max-width:900px">{AY} ayında yenilenen konut ve iş yeri kira sözleşmeleri için yasal üst sınır. <span style="font-weight:400;opacity:.8">(TÜFE 12 aylık ortalama)</span></p>
+  <p style="font-weight:500;font-size:34px;line-height:1.35;margin-top:30px;max-width:900px">{AY} ayında yenilenen konut ve iş yeri kira sözleşmeleri için yasal üst sınır. <span style="font-weight:400;opacity:.8">(son 12 ayın ortalama enflasyonu)</span></p>
 </div>
 {footer('fk', 160)}""")
 
 T[f"{SLUG}_02_kare-1x1"] = P(1080, 1080, "k", f"""
 {head('yatay_siyah-zemin', h=104)}
 <div style="padding:0 64px;margin-top:70px">
-  <span class="tag" style="background:var(--y);color:#000">TÜFE 12 AYLIK ORTALAMA</span>
+  <span class="tag" style="background:var(--y);color:#000">YASAL ÜST SINIR</span>
   <h1 style="font-weight:900;font-size:76px;line-height:1.02;margin-top:34px">{AY} ayı kira<br>artış oranı</h1>
   <div class="rate" style="font-size:270px;color:var(--y);margin-top:26px"><small>%</small>{RATE}</div>
 </div>
@@ -210,7 +210,7 @@ T[f"{SLUG}_03_carousel-4x5_1-kapak"] = P(1080, 1350, "k", f"""
 <div style="margin-top:auto;padding:0 64px 64px;display:flex;justify-content:flex-end;font-weight:700;font-size:32px;color:var(--y);letter-spacing:.06em">KAYDIRIN →</div>""")
 
 items = [(f"En fazla %{RATE} zam", f"{AY} ayında yenilenen konut ve iş yeri sözleşmelerinde kira bu oranın üzerinde artırılamaz."),
-         ("12 aylık TÜFE ortalaması", f"Oran yıllık enflasyon ({pct(SA['tufe_yillik'])}) değil, TÜFE'nin 12 aylık ortalamasına göre belirlenir."),
+         ("Son 12 ayın ortalaması", f"Oran, açıklanan yıllık enflasyon ({pct(SA['tufe_yillik'])}) değil, son 12 ayın ortalama enflasyonu esas alınarak belirlenir."),
          (f"{PREV['ay']} ayına göre {YON}", f"{PREV['ay']} ayında {pct(PREV['oran'])} olan tavan oran {AY} ayında {pct(R)} oldu.")]
 rows = "".join(f"""<div style="display:flex;gap:36px;align-items:flex-start;padding:40px 0;border-top:3px solid #000">
   <div style="flex:none;width:96px;height:96px;background:var(--y);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:56px">{n}</div>
@@ -299,7 +299,7 @@ T[f"{SLUG}_05_gecmis_post-4x5"] = P(1080, 1350, "k", f"""
   <h1 style="font-weight:900;font-size:66px;line-height:1.0">{AY} ayı<br>kira artış oranı</h1>
   <div class="rate" style="font-size:150px;color:var(--y)"><small>%</small>{RATE}</div>
 </div>
-<div style="padding:0 64px;margin-top:22px;font-size:27px;font-weight:400;opacity:.85">{YTXT} · TÜFE 12 aylık ortalama</div>
+<div style="padding:0 64px;margin-top:22px;font-size:27px;font-weight:400;opacity:.85">{YTXT} · son 12 ayın ortalama enflasyonu</div>
 <div style="padding:0 64px;margin-top:30px">{hist_rows(60, 32, 27, 196, 130)}</div>
 {footer('fy', 110, addr=False)}""")
 
@@ -338,7 +338,7 @@ T[f"{SLUG}_02_kare-1x1"] = P(1080, 1080, "k", f"""
   {gauge(R, 800)}
   <div style="position:absolute;left:0;right:0;top:215px;text-align:center">
     <div class="rate" style="font-size:185px;color:var(--y)"><small>%</small>{RATE}</div>
-    <div style="font-size:22px;font-weight:500;opacity:.75;margin-top:14px">TÜFE 12 aylık ortalama · yasal üst sınır</div>
+    <div style="font-size:22px;font-weight:500;opacity:.75;margin-top:14px">Son 12 ayın ortalama enflasyonu · yasal üst sınır</div>
   </div>
 </div>
 <div style="display:flex;justify-content:center;margin:6px 0 0">{delta('#F3BD48', '#000', 26)}</div>

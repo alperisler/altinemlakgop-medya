@@ -79,7 +79,7 @@ def sayfa(p, i, n, renk):
         k, gt, am = g
         h = "TAHMİNİ KİRA POTANSİYELİ" if p.get("kira_tahmini") else "MEVCUT KİRA GELİRİ"
         yld = (f'<div class="yld"><div class="h">{h}</div><div class="r">{tl(k)} ₺ / ay'
-               f'</div><div class="st"><div>BRÜT GETİRİ<b>%{ondalik(gt)}</b></div><div>AMORTİSMAN<b>~{ondalik(am)} yıl</b></div></div></div>')
+               f'</div><div class="st"><div>KİRA GETİRİSİ<b>%{ondalik(gt)} / yıl</b></div><div>KENDİNİ ÖDER<b>~{ondalik(am)} yılda</b></div></div></div>')
     eids = f'<div class="eids"><img src="{logo("eids")}"></div>'  # kullanıcı isteği: tüm portföylerde EİDS logosu
     pill_bg = "background:var(--y);color:#000" if renk == "s" else "background:#fff;color:#000"
     return page(1080, 1350, "k", f"""
@@ -178,7 +178,7 @@ def aciklama(lst, durum):
         g = getiri(p)
         if g:
             ek = (f"\n{'Tahmini kira' if p.get('kira_tahmini') else 'Kira'} {tl(g[0])} ₺/ay · "
-                  f"%{ondalik(g[1])} getiri · ~{ondalik(g[2])} yıl amortisman")
+                  f"yılda %{ondalik(g[1])} kira getirisi · kendini ~{ondalik(g[2])} yılda öder")
         kc = " · Kiracılı" if (p.get("kiracili") and durum == "Satılık") else ""
         url = p.get("url") or ("https://www." + p["link"])
         satir.append(f"{i:02d}) {p['baslik']} · {f}{kc}{ek}\n{url}")
