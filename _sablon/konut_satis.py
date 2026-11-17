@@ -71,7 +71,7 @@ T[f"{SLUG}_02_carousel-4x5_1-kapak"] = P(1080, 1350, "k", f"""
 T[f"{SLUG}_02_carousel-4x5_2-karsilastirma"] = P(1080, 1350, "k", f"""
 {head('yatay_siyah-zemin', N, _K + 1, col='color:var(--y)')}
 <div style="padding:0 64px;margin-top:70px">
-  <span class="tag" style="background:var(--y);color:#000">TÜRKİYE · İSTANBUL · GOP</span>
+  <span class="tag" style="background:var(--y);color:#000">TÜRKİYE · İSTANBUL · GAZİOSMANPAŞA</span>
   <h1 style="font-weight:900;font-size:76px;line-height:1.02;margin-top:30px">Geçen yıl, geçen ay<br>ve <span style="color:var(--y)">bu ay</span></h1>
 </div>
 <div style="padding:0 34px;margin-top:50px">{bars3(G3, 1012, 600, fs=26)}</div>
