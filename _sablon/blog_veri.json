@@ -1,0 +1,85 @@
+{
+  "_aciklama": "Blog görevi her ay günceller. gop_ilan: İşlerOS ilan bazlı ortalamalar (Gaziosmanpaşa · Konut Satılık/Kiralık Ortalama Fiyat). Satış ve fiyat endeksi grafikleri konut_satis_veri.json ve kfe_veri.json dosyalarından okunur.",
+  "ay": "Kasım",
+  "yil": 2026,
+  "baslik_ust": "Gaziosmanpaşa'da",
+  "baslik_vurgu": "konut piyasası",
+  "gop_ilan": {
+    "donem": "Ekim 2026",
+    "satilik_ort": 15627500,
+    "satilik_degisim": -0.3,
+    "kiralik_ort": 83000,
+    "kiralik_degisim": 14.48
+  },
+  "manset_ust": "Kiralıklar",
+  "manset_vurgu": "yükselişte,",
+  "manset_alt": "satılıkta fren",
+  "yorumlar": [
+    {
+      "ikon": "trendup",
+      "etiket": "KİRALIK",
+      "baslik": "Kiralık ilanlar yükselişte",
+      "deger": "+%14,5",
+      "aciklama": "GOP ort. kiralık ilan 72.500 → 83.000 TL (Eylül → Ekim)",
+      "yorum": "Okul dönemi ve yeni kira artış oranı talebi canlı tutuyor; ev sahiplerinin beklentisi de yükseldi."
+    },
+    {
+      "ikon": "home",
+      "etiket": "SATILIK",
+      "baslik": "Satılıkta fiyatlar yatay",
+      "deger": "−%0,3",
+      "aciklama": "Ort. satılık ilan 15,6 milyon TL'de duraksadı",
+      "yorum": "Satıcı fiyatını korumaya çalışıyor, alıcı pazarlık payı arıyor. Doğru fiyatlanan ilan öne çıkıyor."
+    },
+    {
+      "ikon": "pin",
+      "etiket": "EN ÇOK PRİM YAPAN İLÇE",
+      "baslik": "Eyüpsultan öne çıktı",
+      "deger": "+%40,6",
+      "aciklama": "Eylül satışları yıllık bazda bölgenin en güçlü artışı",
+      "yorum": "Yeni proje ve dönüşüm stoku satışa çıkan ilçeler öne geçiyor. Adet olarak en hareketlisi 987 satışla Başakşehir."
+    },
+    {
+      "ikon": "key",
+      "etiket": "KİRA > FİYAT",
+      "baslik": "Kira, fiyattan hızlı artıyor",
+      "deger": "%42 / %32",
+      "aciklama": "İstanbul m² kirası ve m² fiyatı, yıllık (TCMB, 3. çeyrek)",
+      "yorum": "Kira fiyattan hızlı arttıkça yatırımın geri dönüş süresi kısalıyor; kiralık yatırım yeniden cazipleşiyor."
+    }
+  ],
+  "genel_yorumlar": [
+    {
+      "ikon": "trend",
+      "etiket": "KFE · TCMB",
+      "baslik": "Fiyat artışı yavaşlıyor",
+      "deger": "%25,0 → %22,3",
+      "aciklama": "Türkiye yıllık konut fiyat artışı, Temmuz → Eylül",
+      "yorum": "Ülke genelinde fiyatlar soğurken İstanbul %26-28 bandında kalıyor; enflasyondan arındırıldığında konut hâlâ ucuzluyor."
+    },
+    {
+      "ikon": "home",
+      "etiket": "YENİ vs İKİNCİ EL",
+      "baslik": "Yeni konut daha çok prim yapıyor",
+      "deger": "%24,5 / %21,8",
+      "aciklama": "Yıllık fiyat artışı; ilk el satışlar +%3,9, ikinci el −%15,3",
+      "yorum": "İlk el satışlar yıllık %3,9 artarken ikinci el %15,3 geriledi. Dönüşüm bölgesi Gaziosmanpaşa için önemli bir sinyal."
+    },
+    {
+      "ikon": "bank",
+      "etiket": "KREDİLİ SATIŞ",
+      "baslik": "Kredi geri dönüyor",
+      "deger": "+%24,7",
+      "aciklama": "İpotekli satışlar Ocak-Eylül; toplam satışlar −%7,2",
+      "yorum": "Peşin alıcı temkinli, krediye erişebilen alıcı piyasaya dönüyor. Faizdeki her düşüş talebi canlandırır."
+    },
+    {
+      "ikon": "pin",
+      "etiket": "GOP vs KOMŞULAR",
+      "baslik": "Eyüpsultan ile fark açıldı",
+      "deger": "55 puan",
+      "aciklama": "Eyüpsultan +%40,6, GOP −%14,6 (yıllık satış, Eylül)",
+      "yorum": "Gaziosmanpaşa, Sultangazi ve Esenler'den iyi; Eyüpsultan'ın gerisinde. Dönüşüm teslimleriyle farkın kapanması beklenir."
+    }
+  ]
+}

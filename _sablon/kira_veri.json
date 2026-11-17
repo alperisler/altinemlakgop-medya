@@ -1,0 +1,23 @@
+{
+  "_aciklama": "Her ay TÜİK açıklamasından sonra 'oranlar' listesinin SONUNA yeni ayı ekle ve 'son_aciklama' alanını güncelle. 'ay' = kira artışının uygulanacağı ay (ör. Kasım verisi = Ekim enflasyonuyla açıklanan oran).",
+  "son_aciklama": {
+    "tarih": "3 Kasım 2026",
+    "tufe_aylik": 2.58,
+    "tufe_yillik": 29.77
+  },
+  "oranlar": [
+    {"ay": "Kasım", "yil": 2025, "oran": 37.15},
+    {"ay": "Aralık", "yil": 2025, "oran": 35.91},
+    {"ay": "Ocak", "yil": 2026, "oran": 34.88},
+    {"ay": "Şubat", "yil": 2026, "oran": 33.98},
+    {"ay": "Mart", "yil": 2026, "oran": 33.39},
+    {"ay": "Nisan", "yil": 2026, "oran": 32.82},
+    {"ay": "Mayıs", "yil": 2026, "oran": 32.43},
+    {"ay": "Haziran", "yil": 2026, "oran": 32.24},
+    {"ay": "Temmuz", "yil": 2026, "oran": 32.03},
+    {"ay": "Ağustos", "yil": 2026, "oran": 31.90},
+    {"ay": "Eylül", "yil": 2026, "oran": 31.79},
+    {"ay": "Ekim", "yil": 2026, "oran": 31.49},
+    {"ay": "Kasım", "yil": 2026, "oran": 31.23}
+  ]
+}

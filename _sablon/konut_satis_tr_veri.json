@@ -1,0 +1,39 @@
+{
+  "_aciklama": "Türkiye odaklı konut satış serisi (İstanbul/GOP verisi olmadan). Kaynak: TÜİK bülteni haberleri (AA/Sabah, Kocaeli Kent, hisse.net).",
+  "donem": {"ay": "Ekim", "yil": 2026},
+  "aciklama_tarihi": "17 Kasım 2026",
+  "turkiye": {
+    "satis": 131072, "onceki_ay": 142390, "yillik_degisim": -23.3,
+    "ilk_el": 50105, "ikinci_el": 80967, "ipotekli": 23286, "gecen_yil": 170955,
+    "ilk_el_onceki_ay": 51519, "ikinci_el_onceki_ay": 90871,
+    "ilk_el_gecen_yil": 57675, "ikinci_el_gecen_yil": 113280,
+    "ilk_el_yillik": -13.1, "ikinci_el_yillik": -28.5, "ipotekli_yillik": -5.7,
+    "yabanci": 2259, "yabanci_yillik": 0.9
+  },
+  "ybb": {
+    "toplam": 1223991, "toplam_degisim": -9.2,
+    "ilk_el": 410018, "ilk_el_degisim": -2.4,
+    "ikinci_el": 813973, "ikinci_el_degisim": -12.3,
+    "ipotekli": 235496, "ipotekli_degisim": 20.8
+  },
+  "yorumlar": [
+    {"ikon": "trend", "etiket": "TÜRKİYE · AYLIK", "baslik": "Eylül zirvesinden geri çekilme",
+     "deger": "−%7,9", "aciklama": "Eylül 142.390 → Ekim 131.072 konut",
+     "yorum": "Eylülde yılın en yüksek satışı görülmüştü; ekimde işlem sayısı yeniden geriledi."},
+    {"ikon": "trend", "etiket": "TÜRKİYE · YILLIK", "baslik": "Geçen yılın belirgin gerisinde",
+     "deger": "−%23,3", "aciklama": "Ekim 2025: 170.955 konut",
+     "yorum": "Yıllık düşüş eylüldeki %9,3'ten %23,3'e çıktı. Geçen ekimin yüksek bazı farkı büyütüyor."},
+    {"ikon": "home", "etiket": "İLK EL vs İKİNCİ EL", "baslik": "İkinci el daha sert düştü",
+     "deger": "−%13/−%28,5", "aciklama": "Ekim, yıllık · ilk el 50.105, ikinci el 80.967",
+     "yorum": "Yeni konut daha dirençli. Toplam kaybın büyük kısmı ikinci el satışlardan geliyor."},
+    {"ikon": "bank", "etiket": "KREDİLİ SATIŞ", "baslik": "Kredili satış yıl genelinde artıda",
+     "deger": "+%20,8", "aciklama": "Ocak-Ekim 235.496 · Ekim'de −%5,7, payı %17,8",
+     "yorum": "Ekimde kredili satış da azaldı ama toplamdan çok daha az. Krediye erişen alıcı piyasada kalıyor."},
+    {"ikon": "pct", "etiket": "YABANCIYA SATIŞ", "baslik": "Yabancı talebi yatay seyretti",
+     "deger": "2.259", "aciklama": "Ekim, yıllık +%0,9 · toplam içindeki payı %1,7",
+     "yorum": "Yabancıya satış geçen yılın seviyesinde. Payı küçük; piyasanın yönünü yerli alıcı belirliyor."},
+    {"ikon": "cal", "etiket": "OCAK–EKİM 2026", "baslik": "On ayda 1,22 milyon konut",
+     "deger": "−%9,2", "aciklama": "Yılbaşından bu yana 1.223.991 konut satıldı",
+     "yorum": "Yıl geneline bakınca kayıp %9,2. Ekimdeki %23'lük düşüş yıllık tablodan çok daha sert."}
+  ]
+}

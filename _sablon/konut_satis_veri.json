@@ -1,0 +1,128 @@
+{
+  "_aciklama": "Her ay TÜİK Konut ve İş Yeri Satış İstatistikleri açıklanınca güncellenir. Kaynak: İşlerOS get_real_estate_market_analysis(category='Konut Satışları', limit=100) — seriler: tuik-home-sales-tr, tuik-home-sales-istanbul(-first/-second/-mortgaged), tuik-home-sales-gaziosmanpasa, tuik-home-sales-district-*. 'gecmis' listesinin sonuna yeni ayı ekle.",
+  "donem": {
+    "ay": "Eylül",
+    "yil": 2026
+  },
+  "aciklama_tarihi": "16 Ekim 2026",
+  "turkiye": {
+    "satis": 142390,
+    "onceki_ay": 127410,
+    "yillik_degisim": -9.26,
+    "ilk_el": 51519,
+    "ikinci_el": 90871,
+    "ipotekli": 23397,
+    "gecen_yil": 156918
+  },
+  "istanbul": {
+    "satis": 22212,
+    "onceki_ay": 20426,
+    "yillik_degisim": -16.86,
+    "ilk_el": 6337,
+    "ikinci_el": 15875,
+    "ipotekli": 4629
+  },
+  "gop": {
+    "satis": 464,
+    "onceki_ay": 412,
+    "yillik_degisim": -14.55
+  },
+  "komsular": [
+    {
+      "ilce": "Başakşehir",
+      "satis": 987,
+      "yillik_degisim": -22.83
+    },
+    {
+      "ilce": "Bağcılar",
+      "satis": 691,
+      "yillik_degisim": 17.72
+    },
+    {
+      "ilce": "Eyüpsultan",
+      "satis": 627,
+      "yillik_degisim": 40.58
+    },
+    {
+      "ilce": "Sultangazi",
+      "satis": 422,
+      "yillik_degisim": -32.15
+    },
+    {
+      "ilce": "Bayrampaşa",
+      "satis": 308,
+      "yillik_degisim": -3.45
+    },
+    {
+      "ilce": "Esenler",
+      "satis": 265,
+      "yillik_degisim": -35.99
+    }
+  ],
+  "gecmis": [
+    {
+      "ay": "Ağustos",
+      "yil": 2026,
+      "tr": 127410,
+      "ist": 20426,
+      "gop": 412
+    },
+    {
+      "ay": "Eylül",
+      "yil": 2026,
+      "tr": 142390,
+      "ist": 22212,
+      "gop": 464
+    }
+  ],
+  "yorumlar": [
+    {
+      "ikon": "trendup",
+      "etiket": "TÜRKİYE · AYLIK",
+      "baslik": "Satışlar aydan aya toparlandı",
+      "deger": "+%11,8",
+      "aciklama": "Ağustos 127.410 → Eylül 142.390 konut",
+      "yorum": "Yaz durgunluğunun ardından eylülde hareket geri geldi; sonbahar sezonu satışları destekliyor."
+    },
+    {
+      "ikon": "trend",
+      "etiket": "TÜRKİYE · YILLIK",
+      "baslik": "Ama geçen yılın gerisinde",
+      "deger": "−%9,3",
+      "aciklama": "Eylül 2025: 156.918 · Ocak-Eylül toplamı −%7,2",
+      "yorum": "Toparlanma var ama piyasa henüz geçen yılın temposuna dönmedi; alıcı hâlâ seçici."
+    },
+    {
+      "ikon": "home",
+      "etiket": "İLK EL vs İKİNCİ EL",
+      "baslik": "Yeni konut ayrışıyor",
+      "deger": "+%3,9 / −%15,3",
+      "aciklama": "Eylül, yıllık · ilk el 51.519, ikinci el 90.871",
+      "yorum": "Alıcı yeni ve projeli konuta yöneliyor. Dönüşüm bölgesi Gaziosmanpaşa için olumlu bir sinyal."
+    },
+    {
+      "ikon": "bank",
+      "etiket": "KREDİLİ SATIŞ",
+      "baslik": "Kredi geri dönüyor",
+      "deger": "+%24,7",
+      "aciklama": "İpotekli satışlar Ocak-Eylül · İstanbul'da payı %20,8",
+      "yorum": "Peşin alıcı temkinli, krediye erişebilen alıcı piyasaya dönüyor. Faizdeki her düşüş talebi canlandırır."
+    },
+    {
+      "ikon": "pin",
+      "etiket": "İSTANBUL",
+      "baslik": "İstanbul daha sert düştü",
+      "deger": "−%16,9",
+      "aciklama": "Eylül'de 22.212 satış · Türkiye ortalaması −%9,3",
+      "yorum": "Yüksek fiyat seviyesi İstanbul'da alım gücünü daha çok zorluyor; işlem sayısı ülke ortalamasının gerisinde."
+    },
+    {
+      "ikon": "home",
+      "etiket": "GAZİOSMANPAŞA",
+      "baslik": "Ayda +%12,6, yılda −%14,6",
+      "deger": "464 satış",
+      "aciklama": "Ağustos 412 → Eylül 464 · İstanbul'un biraz önünde",
+      "yorum": "Bölgemiz İstanbul ortalamasından iyi. Doğru fiyatlanan ve krediye uygun daireler daha hızlı satılıyor."
+    }
+  ]
+}

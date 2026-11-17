@@ -1,0 +1,122 @@
+{
+  "_aciklama": "Her ay TCMB Konut Fiyat Endeksi açıklanınca güncellenir. Kaynak: İşlerOS get_real_estate_market_analysis(category='Konut Fiyatları') ve (category='Kira') — seriler: tcmb-kfe-tr, tcmb-kfe-istanbul, tcmb-kfe-real-tr, tcmb-kfe-new-tr, tcmb-kfe-existing-tr, tcmb-housing-unit-price-istanbul (çeyreklik), tcmb-new-tenant-rent-istanbul (çeyreklik). 'gecmis' listesinin sonuna yeni ayı ekle (yıllık % değerleri). NOT (Ekim 2026): İşlerOS yanıt vermediği için Ekim verisi TCMB açıklaması/haber kaynaklarından girildi; yeni/ikinci el kırılımı bulunamadı (null).",
+  "donem": {
+    "ay": "Ekim",
+    "yil": 2026
+  },
+  "aciklama_tarihi": "17 Kasım 2026",
+  "turkiye": {
+    "endeks": 240.9,
+    "aylik": 0.7,
+    "yillik": 21.1,
+    "reel_yillik": -6.6
+  },
+  "istanbul": {
+    "endeks": 233.1,
+    "aylik": 1.1,
+    "yillik": 24.8
+  },
+  "yeni_konut_yillik": null,
+  "ikinci_el_yillik": null,
+  "istanbul_birim": {
+    "donem": "3. çeyrek 2026",
+    "fiyat_m2": 90843.5,
+    "fiyat_yillik": 32.19,
+    "kira_m2": 475.2,
+    "kira_yillik": 42.03
+  },
+  "gecmis": [
+    {
+      "ay": "Mayıs",
+      "yil": 2026,
+      "tr": 24.5,
+      "ist": 25.4,
+      "reel": -6.1
+    },
+    {
+      "ay": "Haziran",
+      "yil": 2026,
+      "tr": 24.5,
+      "ist": 25.3,
+      "reel": -5.8
+    },
+    {
+      "ay": "Temmuz",
+      "yil": 2026,
+      "tr": 25.0,
+      "ist": 27.7,
+      "reel": -5.1
+    },
+    {
+      "ay": "Ağustos",
+      "yil": 2026,
+      "tr": 23.0,
+      "ist": 26.3,
+      "reel": -6.5
+    },
+    {
+      "ay": "Eylül",
+      "yil": 2026,
+      "tr": 22.34,
+      "ist": 26.79,
+      "reel": -5.69
+    },
+    {
+      "ay": "Ekim",
+      "yil": 2026,
+      "tr": 21.1,
+      "ist": 24.8,
+      "reel": -6.6
+    }
+  ],
+  "yorumlar": [
+    {
+      "ikon": "trend",
+      "etiket": "TÜRKİYE · YILLIK",
+      "baslik": "Yıllık artış yavaşlıyor",
+      "deger": "%21,1",
+      "aciklama": "Temmuz %25,0 → Eylül %22,3 → Ekim %21,1",
+      "yorum": "Yıllık artış üç aydır üst üste geriliyor. Fiyatlar hâlâ artıyor ama tempo belirgin şekilde düştü."
+    },
+    {
+      "ikon": "pin",
+      "etiket": "İSTANBUL vs TÜRKİYE",
+      "baslik": "İstanbul farkı koruyor",
+      "deger": "+3,7 puan",
+      "aciklama": "İstanbul %24,8 · Türkiye %21,1 (yıllık, Ekim)",
+      "yorum": "İstanbul yine bölgeler arasında en yüksek yıllık artışı gösterdi; büyükşehir talebi fiyatı destekliyor."
+    },
+    {
+      "ikon": "pct",
+      "etiket": "REEL DEĞİŞİM",
+      "baslik": "Reel kayıp derinleşti",
+      "deger": "−%6,6",
+      "aciklama": "Enflasyondan arındırılmış yıllık değişim · Eylül −%5,7",
+      "yorum": "Enflasyona göre konut bir ay öncesinden daha ucuz. Uzun vadeli düşünen alıcı için bu tablo dikkate değer."
+    },
+    {
+      "ikon": "bank",
+      "etiket": "BÜYÜKŞEHİRLER",
+      "baslik": "Üç büyükşehirde ayrışma",
+      "deger": "24,8/22,7/17,9",
+      "aciklama": "Yıllık % · İstanbul / Ankara / İzmir · Ekim",
+      "yorum": "Üç büyük şehir aynı hızda gitmiyor; İstanbul ile İzmir arasındaki fark yaklaşık 7 puan."
+    },
+    {
+      "ikon": "trendup",
+      "etiket": "AYLIK",
+      "baslik": "İstanbul'da aylık tempo yüksek",
+      "deger": "%1,1 / %0,7",
+      "aciklama": "Ekim aylık değişim · İstanbul / Türkiye",
+      "yorum": "İstanbul'da aylık artış Türkiye ortalamasının yaklaşık 1,6 katı; büyükşehir lehine fark sürüyor."
+    },
+    {
+      "ikon": "key",
+      "etiket": "KİRA vs FİYAT",
+      "baslik": "Kira, fiyattan hızlı artıyor",
+      "deger": "%31 / %24,8",
+      "aciklama": "İstanbul yeni kiracı kirası / konut fiyatı, yıllık · Ekim",
+      "yorum": "Kiralar fiyatlardan hızlı artınca kira ile geri dönüş süresi kısalıyor; kiralık yatırım öne çıkıyor."
+    }
+  ]
+}
