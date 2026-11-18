@@ -129,7 +129,7 @@ T[f"{SLUG}_03_story-9x16_1-ozet"] = P(1080, 1920, "k", f"""
   <div style="margin-top:26px">{badge(TR['yillik_degisim'], 'geçen yıla göre', Y, '#000', 32)}</div>
 </div>
 <div style="padding:0 34px;margin-top:70px">{bars3(G3, 1012, 560, fs=27)}</div>
-<div style="margin-top:auto;height:200px;background:var(--y);color:#000;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:40px">Bölgemizin verileri sonraki hikâyede →</div>""")
+<div style="margin-top:auto;height:200px;background:var(--y);color:#000;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:40px">Gaziosmanpaşa ve çevresi gönderide →</div>""")
 
 T[f"{SLUG}_03_story-9x16_2-bolge"] = P(1080, 1920, "k", f"""
 <div style="padding:150px 80px 0"><img src="{logo('yatay_siyah-zemin')}" style="height:120px;margin-left:-12px"></div>

@@ -1,62 +1,62 @@
 {
   "_aciklama": "Her ay TÜİK Konut ve İş Yeri Satış İstatistikleri açıklanınca güncellenir. Kaynak: İşlerOS get_real_estate_market_analysis(category='Konut Satışları', limit=100) — seriler: tuik-home-sales-tr, tuik-home-sales-istanbul(-first/-second/-mortgaged), tuik-home-sales-gaziosmanpasa, tuik-home-sales-district-*. 'gecmis' listesinin sonuna yeni ayı ekle.",
   "donem": {
-    "ay": "Eylül",
+    "ay": "Ekim",
     "yil": 2026
   },
-  "aciklama_tarihi": "16 Ekim 2026",
+  "aciklama_tarihi": "17 Kasım 2026",
   "turkiye": {
-    "satis": 142390,
-    "onceki_ay": 127410,
-    "yillik_degisim": -9.26,
-    "ilk_el": 51519,
-    "ikinci_el": 90871,
-    "ipotekli": 23397,
-    "gecen_yil": 156918
+    "satis": 131072,
+    "onceki_ay": 142390,
+    "yillik_degisim": -23.33,
+    "ilk_el": 50105,
+    "ikinci_el": 80967,
+    "ipotekli": 23286,
+    "gecen_yil": 170955
   },
   "istanbul": {
-    "satis": 22212,
-    "onceki_ay": 20426,
-    "yillik_degisim": -16.86,
-    "ilk_el": 6337,
-    "ikinci_el": 15875,
-    "ipotekli": 4629
+    "satis": 22753,
+    "onceki_ay": 22212,
+    "yillik_degisim": -21.55,
+    "ilk_el": 7402,
+    "ikinci_el": 15351,
+    "ipotekli": 4760
   },
   "gop": {
-    "satis": 464,
-    "onceki_ay": 412,
-    "yillik_degisim": -14.55
+    "satis": 472,
+    "onceki_ay": 464,
+    "yillik_degisim": -23.13
   },
   "komsular": [
     {
       "ilce": "Başakşehir",
-      "satis": 987,
-      "yillik_degisim": -22.83
+      "satis": 1100,
+      "yillik_degisim": -19.77
     },
     {
       "ilce": "Bağcılar",
-      "satis": 691,
-      "yillik_degisim": 17.72
+      "satis": 538,
+      "yillik_degisim": -16.98
     },
     {
       "ilce": "Eyüpsultan",
-      "satis": 627,
-      "yillik_degisim": 40.58
+      "satis": 595,
+      "yillik_degisim": -26.99
     },
     {
       "ilce": "Sultangazi",
-      "satis": 422,
-      "yillik_degisim": -32.15
+      "satis": 425,
+      "yillik_degisim": -38.32
     },
     {
       "ilce": "Bayrampaşa",
-      "satis": 308,
-      "yillik_degisim": -3.45
+      "satis": 291,
+      "yillik_degisim": -6.43
     },
     {
       "ilce": "Esenler",
-      "satis": 265,
-      "yillik_degisim": -35.99
+      "satis": 288,
+      "yillik_degisim": -26.9
     }
   ],
   "gecmis": [
@@ -73,56 +73,63 @@
       "tr": 142390,
       "ist": 22212,
       "gop": 464
+    },
+    {
+      "ay": "Ekim",
+      "yil": 2026,
+      "tr": 131072,
+      "ist": 22753,
+      "gop": 472
     }
   ],
   "yorumlar": [
     {
-      "ikon": "trendup",
-      "etiket": "TÜRKİYE · AYLIK",
-      "baslik": "Satışlar aydan aya toparlandı",
-      "deger": "+%11,8",
-      "aciklama": "Ağustos 127.410 → Eylül 142.390 konut",
-      "yorum": "Yaz durgunluğunun ardından eylülde hareket geri geldi; sonbahar sezonu satışları destekliyor."
+      "ikon": "trend",
+      "etiket": "TÜRKİYE · GEÇEN AYA GÖRE",
+      "baslik": "Ekimde satışlar azaldı",
+      "deger": "−%7,9",
+      "aciklama": "Eylül 142.390 → Ekim 131.072 konut",
+      "yorum": "Eylüldeki hareketli aydan sonra ekimde daha az ev el değiştirdi. Alıcı acele etmiyor, pazarlık payı artıyor."
     },
     {
       "ikon": "trend",
-      "etiket": "TÜRKİYE · YILLIK",
-      "baslik": "Ama geçen yılın gerisinde",
-      "deger": "−%9,3",
-      "aciklama": "Eylül 2025: 156.918 · Ocak-Eylül toplamı −%7,2",
-      "yorum": "Toparlanma var ama piyasa henüz geçen yılın temposuna dönmedi; alıcı hâlâ seçici."
+      "etiket": "TÜRKİYE · GEÇEN YILA GÖRE",
+      "baslik": "Geçen ekimden çok geride",
+      "deger": "−%23,3",
+      "aciklama": "Ekim 2025: 170.955 · yılbaşından beri −%9,2",
+      "yorum": "Geçen ekim çok yoğun bir aydı, fark bu yüzden büyük. Yılın tamamına bakınca düşüş daha sınırlı."
     },
     {
       "ikon": "home",
-      "etiket": "İLK EL vs İKİNCİ EL",
-      "baslik": "Yeni konut ayrışıyor",
-      "deger": "+%3,9 / −%15,3",
-      "aciklama": "Eylül, yıllık · ilk el 51.519, ikinci el 90.871",
-      "yorum": "Alıcı yeni ve projeli konuta yöneliyor. Dönüşüm bölgesi Gaziosmanpaşa için olumlu bir sinyal."
+      "etiket": "SIFIR KONUT · İKİNCİ EL",
+      "baslik": "İkinci el daha çok düştü",
+      "deger": "−%13 / −%28,5",
+      "aciklama": "Geçen yılın ekimine göre · sıfır 50.105, ikinci el 80.967",
+      "yorum": "Sıfır konut satışları daha iyi dayanıyor. İkinci el satan ev sahibi için doğru fiyat her zamankinden önemli."
     },
     {
       "ikon": "bank",
-      "etiket": "KREDİLİ SATIŞ",
-      "baslik": "Kredi geri dönüyor",
-      "deger": "+%24,7",
-      "aciklama": "İpotekli satışlar Ocak-Eylül · İstanbul'da payı %20,8",
-      "yorum": "Peşin alıcı temkinli, krediye erişebilen alıcı piyasaya dönüyor. Faizdeki her düşüş talebi canlandırır."
+      "etiket": "KREDİYLE ALINAN KONUT",
+      "baslik": "Krediyle alım yılda artıda",
+      "deger": "+%20,8",
+      "aciklama": "Yılbaşından beri 235.496 · ekimde geçen yıla göre −%5,7",
+      "yorum": "Ekimde krediyle alınan ev, toplam satışlardan çok daha az düştü. Krediye uygun daireye alıcı bulmak daha kolay."
     },
     {
       "ikon": "pin",
       "etiket": "İSTANBUL",
-      "baslik": "İstanbul daha sert düştü",
-      "deger": "−%16,9",
-      "aciklama": "Eylül'de 22.212 satış · Türkiye ortalaması −%9,3",
-      "yorum": "Yüksek fiyat seviyesi İstanbul'da alım gücünü daha çok zorluyor; işlem sayısı ülke ortalamasının gerisinde."
+      "baslik": "İstanbul Türkiye'ye yakın",
+      "deger": "−%21,6",
+      "aciklama": "Ekim 22.753 satış · geçen yıla göre · Türkiye −%23,3",
+      "yorum": "İstanbul'da satış geçen aya göre biraz arttı ama geçen yılın gerisinde. Düşüş ülke geneliyle benzer."
     },
     {
       "ikon": "home",
       "etiket": "GAZİOSMANPAŞA",
-      "baslik": "Ayda +%12,6, yılda −%14,6",
-      "deger": "464 satış",
-      "aciklama": "Ağustos 412 → Eylül 464 · İstanbul'un biraz önünde",
-      "yorum": "Bölgemiz İstanbul ortalamasından iyi. Doğru fiyatlanan ve krediye uygun daireler daha hızlı satılıyor."
+      "baslik": "Geçen aydan biraz fazla",
+      "deger": "472 satış",
+      "aciklama": "Eylül 464 → Ekim 472 · geçen yıla göre −%23,1",
+      "yorum": "Bölgemizde satış eylüle göre arttı. Geçen yıla göre düşüş İstanbul'daki %21,6'ya yakın; doğru fiyatlı ev satılıyor."
     }
   ]
 }
