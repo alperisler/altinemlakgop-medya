@@ -16,9 +16,11 @@ MAX_SAYFA = 20  # Instagram carousel sınırı (kapak dahil)
 # fiyatı düştüyse sayfada, kapak kartında ve açıklamada "FİYAT DÜŞTÜ" + eski fiyat gösterilir.
 # Geçen haftanın verisi: portfoy_veri_onceki.json (görev, yeni veriyi yazmadan önce eskisini buraya kopyalar).
 # Elle de verilebilir: portföyde "onceki_fiyat": <sayı>.
-_ONC = KIT / "portfoy_veri_onceki.json"
+# Yoksa görevin klonladığı depodaki _sablon/portfoy_veri.json (henüz güncellenmemiş = geçen haftanın verisi).
+_ONC = next((p for p in (KIT / "portfoy_veri_onceki.json",
+                         pathlib.Path("/home/claude/altinemlakgop-medya/_sablon/portfoy_veri.json")) if p.exists()), None)
 ONCEKI = {}
-if _ONC.exists():
+if _ONC:
     _o = json.loads(_ONC.read_text())
     if _o.get("hafta") != V.get("hafta"):
         ONCEKI = {(str(p["no"]), p["durum"]): p["fiyat"] for p in _o.get("portfoyler", [])}
