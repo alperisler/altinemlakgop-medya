@@ -12,6 +12,22 @@ OUT = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else KIT / "out")
 V = json.loads((KIT / "portfoy_veri.json").read_text())
 MAX_SAYFA = 20  # Instagram carousel sınırı (kapak dahil)
 
+# FİYAT DÜŞTÜ (kullanıcı isteği, 25 Kasım 2026): geçen haftanın bülteninde de olan bir portföyün
+# fiyatı düştüyse sayfada, kapak kartında ve açıklamada "FİYAT DÜŞTÜ" + eski fiyat gösterilir.
+# Geçen haftanın verisi: portfoy_veri_onceki.json (görev, yeni veriyi yazmadan önce eskisini buraya kopyalar).
+# Elle de verilebilir: portföyde "onceki_fiyat": <sayı>.
+_ONC = KIT / "portfoy_veri_onceki.json"
+ONCEKI = {}
+if _ONC.exists():
+    _o = json.loads(_ONC.read_text())
+    if _o.get("hafta") != V.get("hafta"):
+        ONCEKI = {(str(p["no"]), p["durum"]): p["fiyat"] for p in _o.get("portfoyler", [])}
+
+def dusus(p):
+    """Fiyat düştüyse eski fiyatı, değilse None döndürür."""
+    eski = p.get("onceki_fiyat") or ONCEKI.get((str(p["no"]), p["durum"]))
+    return eski if eski and p["fiyat"] < eski else None
+
 def tl(v):
     return f"{int(v):,}".replace(",", ".")
 
@@ -52,6 +68,9 @@ CSS = """
 .rb{display:flex;align-items:center;gap:16px}
 .eids{width:104px;height:104px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center}
 .eids img{width:98px;height:98px}
+.dus{position:absolute;z-index:6;left:110px;top:712px;display:flex;align-items:center;gap:14px}
+.dus span{background:#E0262B;color:#fff;font-weight:900;font-size:28px;letter-spacing:.1em;padding:12px 20px;border-radius:10px;box-shadow:0 10px 24px rgba(0,0,0,.35)}
+.dus s{background:rgba(0,0,0,.7);color:#fff;font-weight:700;font-size:30px;padding:10px 16px;border-radius:10px;text-decoration-color:#E0262B;text-decoration-thickness:4px}
 """
 
 def getiri(p):
@@ -84,10 +103,13 @@ def sayfa(p, i, n, renk):
                f'</div><div class="st"><div>KİRA GETİRİSİ<b>%{ondalik(gt)} / yıl</b></div><div>KENDİNİ ÖDER<b>~{ondalik(am)} yılda</b></div></div></div>')
     eids = f'<div class="eids"><img src="{logo("eids")}"></div>'  # kullanıcı isteği: tüm portföylerde EİDS logosu
     pill_bg = "background:var(--y);color:#000" if renk == "s" else "background:#fff;color:#000"
+    eski = dusus(p)
+    dus_html = (f'<div class="dus"><span>▼ FİYAT DÜŞTÜ</span><s>{tl(eski)} ₺{" / ay" if p["durum"] == "Kiralık" else ""}</s></div>'
+                if eski else "")
     return page(1080, 1350, "k", f"""
 <img class="ph" src="{foto(p)}"><div class="shade"></div>
 <div class="top"><span class="pill" style="{pill_bg}">{p['durum'].upper()}</span><span class="cnt">{i:02d} / {n:02d}</span></div>
-<div class="price"><b>{fiyat}</b>{ek}</div>{yld}
+{dus_html}<div class="price"><b>{fiyat}</b>{ek}</div>{yld}
 <div class="panel">
   <div class="ttl">{p['baslik']}</div>
   <div class="loc">{PIN}{p['mahalle']} · {p['ilce']}</div>
@@ -111,6 +133,7 @@ KCSS = """
 .cd img{width:258px;height:290px;object-fit:cover;border-radius:4px;display:block}
 .cd .pr{margin-top:14px;font-weight:900;font-size:36px;color:#000;line-height:1}
 .cd .pr s{text-decoration:none;font-size:24px;font-weight:800}
+.cd .rib{position:absolute;right:-10px;top:-14px;background:#E0262B;color:#fff;font-weight:900;font-size:20px;letter-spacing:.08em;padding:8px 14px;border-radius:8px;box-shadow:0 8px 18px rgba(0,0,0,.35)}
 .cd .lb{font-weight:600;font-size:20px;color:#555;margin-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .stk{position:absolute;right:112px;top:528px;width:200px;height:200px;border-radius:50%;
  display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(12deg);box-shadow:0 18px 40px rgba(0,0,0,.4);z-index:9;border:6px dashed rgba(0,0,0,.25)}
@@ -121,6 +144,8 @@ KCSS = """
 .bar .t small{display:block;font-weight:500;font-size:21px;opacity:.75;margin-top:4px}
 .swipe{font-weight:900;font-size:30px;padding:18px 28px;border-radius:999px}
 """
+
+RIB = '<span class="rib">▼ FİYAT DÜŞTÜ</span>'
 
 def kapak(lst, durum):
     import math
@@ -136,7 +161,7 @@ def kapak(lst, durum):
     for (x, y, r), p in zip(pos, sec):
         pr = tl(p["fiyat"]) + " ₺" + ("<s> / ay</s>" if kir else "")
         cards += (f'<div class="cd" style="left:{x}px;top:{y}px;transform:rotate({r}deg)">'
-                  f'<img src="{foto(p)}"><div class="pr">{pr}</div>'
+                  f'<img src="{foto(p)}">{RIB if dusus(p) else ""}<div class="pr">{pr}</div>'
                   f'<div class="lb">{(p.get("oda") or p["tur"])} · {p["mahalle"]}</div></div>')
     konut = [p["fiyat"] for p in lst if p["tur"] in ("Daire", "Residence")] or [p["fiyat"] for p in lst]
     alt = min(konut)
@@ -182,6 +207,8 @@ def aciklama(lst, durum):
             ek = (f"\n{'Tahmini kira' if p.get('kira_tahmini') else 'Kira'} {tl(g[0])} ₺/ay · "
                   f"yılda %{ondalik(g[1])} kira getirisi · kendini ~{ondalik(g[2])} yılda öder")
         kc = " · Kiracılı" if (p.get("kiracili") and durum == "Satılık") else ""
+        eski = dusus(p)
+        if eski: kc += f" · 🔻 FİYAT DÜŞTÜ (önceki {tl(eski)} ₺)"
         url = p.get("url") or ("https://www." + p["link"])
         satir.append(f"{i:02d}) {p['baslik']} · {f}{kc}{ek}\n{url}")
     tam = bas + "\n\n".join(satir) + son
@@ -208,6 +235,7 @@ def uret():
         txt, yorum = aciklama(lst, durum)
         (d / "aciklama.txt").write_text(txt)
         if yorum: (d / "ilk_yorum.txt").write_text(yorum)
+        print("fiyatı düşen:", [(p["no"], dusus(p), p["fiyat"]) for p in lst if dusus(p)])
         print(durum, len(lst), "sayfa +1 kapak · açıklama", u16(txt), "· ilk yorum", u16(yorum))
 
 if __name__ == "__main__":
